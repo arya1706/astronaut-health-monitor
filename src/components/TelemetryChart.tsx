@@ -12,7 +12,7 @@ import {
   ReferenceLine,
 } from 'recharts';
 import { TelemetryPoint } from '../types/health';
-import { Activity, Droplets, Thermometer, Maximize2, LineChart as ChartIcon } from 'lucide-react';
+import { Activity, Droplets, Thermometer, LineChart as ChartIcon } from 'lucide-react';
 
 interface TelemetryChartProps {
   history: TelemetryPoint[];
@@ -129,9 +129,7 @@ export const TelemetryChart: React.FC<TelemetryChartProps> = ({ history }) => {
               <XAxis dataKey="timeFormatted" stroke="#64748b" tick={{ fontSize: 10, fill: '#94a3b8' }} />
               <YAxis domain={[80, 100]} stroke="#64748b" tick={{ fontSize: 10, fill: '#94a3b8' }} />
               <Tooltip content={<CustomTooltip />} />
-              {/* Critical Oxygen threshold line at 90% */}
               <ReferenceLine y={90} stroke="#ef4444" strokeDasharray="5 5" label={{ value: 'CRITICAL O₂ (<90%)', fill: '#ef4444', fontSize: 10, position: 'insideBottomRight' }} />
-              {/* Nominal Oxygen lower line at 95% */}
               <ReferenceLine y={95} stroke="#10b981" strokeDasharray="3 3" label={{ value: 'Nominal Min (95%)', fill: '#10b981', fontSize: 9, position: 'insideTopRight' }} />
               <Area type="monotone" dataKey="spo2" name="spo2" stroke="#06b6d4" strokeWidth={2.5} fillOpacity={1} fill="url(#spo2Grad)" dot={{ r: 3, fill: '#38bdf8' }} activeDot={{ r: 6, fill: '#06b6d4' }} />
             </AreaChart>
